@@ -104,18 +104,19 @@ module.exports =
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime-corejs2/regenerator */ "./node_modules/@babel/runtime-corejs2/regenerator/index.js");
 /* harmony import */ var _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/defineProperty */ "./node_modules/@babel/runtime-corejs2/helpers/esm/defineProperty.js");
-/* harmony import */ var _babel_runtime_corejs2_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/asyncToGenerator */ "./node_modules/@babel/runtime-corejs2/helpers/esm/asyncToGenerator.js");
-/* harmony import */ var _babel_runtime_corejs2_helpers_esm_slicedToArray__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/slicedToArray */ "./node_modules/@babel/runtime-corejs2/helpers/esm/slicedToArray.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react */ "react");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/asyncToGenerator */ "./node_modules/@babel/runtime-corejs2/helpers/esm/asyncToGenerator.js");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_slicedToArray__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/slicedToArray */ "./node_modules/@babel/runtime-corejs2/helpers/esm/slicedToArray.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _nivo_stream__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @nivo/stream */ "@nivo/stream");
+/* harmony import */ var _nivo_stream__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_nivo_stream__WEBPACK_IMPORTED_MODULE_4__);
 /* harmony import */ var next_server_config__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! next-server/config */ "next-server/config");
 /* harmony import */ var next_server_config__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(next_server_config__WEBPACK_IMPORTED_MODULE_5__);
 
 
 
-
 var _jsxFileName = "/Users/ericcrowder/Documents/repos/stravaR/components/Graph.js";
+
 
 
 
@@ -125,15 +126,15 @@ var _getConfig = next_server_config__WEBPACK_IMPORTED_MODULE_5___default()(),
 var STRAVA_TOKEN = publicRuntimeConfig.STRAVA_TOKEN;
 
 var Graph = function Graph() {
-  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_4__["useState"])([]),
-      _useState2 = Object(_babel_runtime_corejs2_helpers_esm_slicedToArray__WEBPACK_IMPORTED_MODULE_3__["default"])(_useState, 2),
+  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_3__["useState"])([]),
+      _useState2 = Object(_babel_runtime_corejs2_helpers_esm_slicedToArray__WEBPACK_IMPORTED_MODULE_2__["default"])(_useState, 2),
       data = _useState2[0],
       setData = _useState2[1];
 
   var fetchStravaData =
   /*#__PURE__*/
   function () {
-    var _ref = Object(_babel_runtime_corejs2_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_2__["default"])(
+    var _ref = Object(_babel_runtime_corejs2_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_1__["default"])(
     /*#__PURE__*/
     _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
       var res, json, formattedStravaData;
@@ -157,17 +158,20 @@ var Graph = function Graph() {
             case 5:
               json = _context.sent;
               formattedStravaData = json.map(function (activity) {
-                var _ref2;
-
-                return _ref2 = {
-                  name: activity.name,
-                  elevationGain: activity.total_elevation_gain,
-                  type: activity.type
-                }, Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_1__["default"])(_ref2, "name", activity.name), Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_1__["default"])(_ref2, "startDate", activity.start_date_local), Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_1__["default"])(_ref2, "distance", activity.distance), Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_1__["default"])(_ref2, "elapsedTime", activity.elapsed_time), _ref2;
+                if (activity.type === 'Run') {
+                  return {
+                    Run: Math.round(activity.distance * 0.000621371)
+                  };
+                } else {
+                  return {
+                    Ride: Math.round(activity.distance * 0.000621371)
+                  };
+                }
               });
+              console.log(json);
               setData(formattedStravaData);
 
-            case 8:
+            case 9:
             case "end":
               return _context.stop();
           }
@@ -180,17 +184,104 @@ var Graph = function Graph() {
     };
   }();
 
-  Object(react__WEBPACK_IMPORTED_MODULE_4__["useEffect"])(function () {
+  Object(react__WEBPACK_IMPORTED_MODULE_3__["useEffect"])(function () {
     fetchStravaData();
   }, []);
-  console.log(data);
-  return react__WEBPACK_IMPORTED_MODULE_4___default.a.createElement("div", {
+  return react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement("div", {
+    style: {
+      height: 1000,
+      width: 1000
+    },
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 41
+      lineNumber: 39
     },
     __self: this
-  }, "hi");
+  }, react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(_nivo_stream__WEBPACK_IMPORTED_MODULE_4__["ResponsiveStream"], {
+    data: data,
+    keys: ['Run', 'Ride'],
+    curve: "catmullRom",
+    margin: {
+      top: 50,
+      right: 110,
+      bottom: 50,
+      left: 60
+    },
+    axisBottom: {
+      orient: 'bottom',
+      tickSize: 5,
+      tickPadding: 5,
+      tickRotation: 0,
+      legend: 'Days',
+      legendOffset: 36
+    },
+    axisLeft: {
+      orient: 'left',
+      tickSize: 5,
+      tickPadding: 5,
+      tickRotation: 0,
+      legend: 'Activity',
+      legendOffset: -40
+    },
+    offsetType: "none",
+    fillOpacity: 0.85,
+    borderColor: "#000",
+    defs: [{
+      id: 'dots',
+      type: 'patternDots',
+      background: 'inherit',
+      color: '#2c998f',
+      size: 4,
+      padding: 2,
+      stagger: true
+    }, {
+      id: 'squares',
+      type: 'patternSquares',
+      background: 'inherit',
+      color: '#e4c912',
+      size: 6,
+      padding: 2,
+      stagger: true
+    }],
+    fill: [{
+      match: {
+        id: 'Run'
+      },
+      id: 'dots'
+    }, {
+      match: {
+        id: 'Ride'
+      },
+      id: 'squares'
+    }],
+    dotSize: 8,
+    dotBorderWidth: 2,
+    dotBorderColor: "inherit:brighter(0.7)",
+    animate: true,
+    motionStiffness: 90,
+    motionDamping: 15,
+    legends: [{
+      anchor: 'bottom-right',
+      direction: 'column',
+      translateX: 100,
+      itemWidth: 80,
+      itemHeight: 20,
+      itemTextColor: '#999',
+      symbolSize: 12,
+      symbolShape: 'circle',
+      effects: [{
+        on: 'hover',
+        style: {
+          itemTextColor: '#000'
+        }
+      }]
+    }],
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 40
+    },
+    __self: this
+  }));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Graph);
@@ -216,17 +307,6 @@ module.exports = __webpack_require__(/*! core-js/library/fn/array/is-array */ "c
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__(/*! core-js/library/fn/get-iterator */ "core-js/library/fn/get-iterator");
-
-/***/ }),
-
-/***/ "./node_modules/@babel/runtime-corejs2/core-js/object/define-property.js":
-/*!*******************************************************************************!*\
-  !*** ./node_modules/@babel/runtime-corejs2/core-js/object/define-property.js ***!
-  \*******************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__(/*! core-js/library/fn/object/define-property */ "core-js/library/fn/object/define-property");
 
 /***/ }),
 
@@ -308,36 +388,6 @@ function _asyncToGenerator(fn) {
       _next(undefined);
     });
   };
-}
-
-/***/ }),
-
-/***/ "./node_modules/@babel/runtime-corejs2/helpers/esm/defineProperty.js":
-/*!***************************************************************************!*\
-  !*** ./node_modules/@babel/runtime-corejs2/helpers/esm/defineProperty.js ***!
-  \***************************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return _defineProperty; });
-/* harmony import */ var _core_js_object_define_property__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../core-js/object/define-property */ "./node_modules/@babel/runtime-corejs2/core-js/object/define-property.js");
-/* harmony import */ var _core_js_object_define_property__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_core_js_object_define_property__WEBPACK_IMPORTED_MODULE_0__);
-
-function _defineProperty(obj, key, value) {
-  if (key in obj) {
-    _core_js_object_define_property__WEBPACK_IMPORTED_MODULE_0___default()(obj, key, {
-      value: value,
-      enumerable: true,
-      configurable: true,
-      writable: true
-    });
-  } else {
-    obj[key] = value;
-  }
-
-  return obj;
 }
 
 /***/ }),
@@ -462,7 +512,7 @@ var Home = function Home() {
       lineNumber: 7
     },
     __self: this
-  }), "Welcome to next.js!");
+  }));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Home);
@@ -478,6 +528,17 @@ var Home = function Home() {
 
 module.exports = __webpack_require__(/*! /Users/ericcrowder/Documents/repos/stravaR/pages/index.js */"./pages/index.js");
 
+
+/***/ }),
+
+/***/ "@nivo/stream":
+/*!*******************************!*\
+  !*** external "@nivo/stream" ***!
+  \*******************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("@nivo/stream");
 
 /***/ }),
 
@@ -500,17 +561,6 @@ module.exports = require("core-js/library/fn/array/is-array");
 /***/ (function(module, exports) {
 
 module.exports = require("core-js/library/fn/get-iterator");
-
-/***/ }),
-
-/***/ "core-js/library/fn/object/define-property":
-/*!************************************************************!*\
-  !*** external "core-js/library/fn/object/define-property" ***!
-  \************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = require("core-js/library/fn/object/define-property");
 
 /***/ }),
 

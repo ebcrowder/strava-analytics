@@ -14,6 +14,7 @@
   "author": "eric crowder",
   "license": "ISC",
   "dependencies": {
+    "@nivo/stream": "^0.53.0",
     "next": "^8.0.3",
     "react": "^16.8.4",
     "react-dom": "^16.8.4"

@@ -5,7 +5,6 @@ const Home = () => {
   return (
     <div>
       <Graph />
-      Welcome to next.js!
     </div>
   );
 };
