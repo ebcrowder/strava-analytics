@@ -1,9 +1,9 @@
 ((window["webpackJsonp"] = window["webpackJsonp"] || []).push([["static/development/pages/index.js"],{
 
-/***/ "./components/Graph.js":
-/*!*****************************!*\
-  !*** ./components/Graph.js ***!
-  \*****************************/
+/***/ "./components/Graph.tsx":
+/*!******************************!*\
+  !*** ./components/Graph.tsx ***!
+  \******************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -17,12 +17,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var next_server_config__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! next-server/config */ "./node_modules/next-server/config.js");
 /* harmony import */ var next_server_config__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(next_server_config__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var _graphs_Distance__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./graphs/Distance */ "./components/graphs/Distance.js");
-/* harmony import */ var _graphs_ElevationGain__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./graphs/ElevationGain */ "./components/graphs/ElevationGain.js");
+/* harmony import */ var _graphs_Distance__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./graphs/Distance */ "./components/graphs/Distance.tsx");
+/* harmony import */ var _graphs_ElevationGain__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./graphs/ElevationGain */ "./components/graphs/ElevationGain.tsx");
 
 
 
-var _jsxFileName = "/Users/ericcrowder/Documents/repos/stravaR/components/Graph.js";
+var _jsxFileName = "/Users/ericcrowder/Documents/repos/stravaR/client/components/Graph.tsx";
 
 
 
@@ -115,7 +115,7 @@ var Graph = function Graph() {
   Object(react__WEBPACK_IMPORTED_MODULE_3__["useEffect"])(function () {
     fetchStravaData();
   }, []);
-  return react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement("div", {
+  return react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_3___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement("div", {
     style: {
       height: 500,
       width: 1000,
@@ -123,34 +123,45 @@ var Graph = function Graph() {
     },
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 64
+      lineNumber: 65
     },
     __self: this
   }, react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(_graphs_Distance__WEBPACK_IMPORTED_MODULE_5__["default"], {
     data: distanceData,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 71
-    },
-    __self: this
-  }), react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(_graphs_ElevationGain__WEBPACK_IMPORTED_MODULE_6__["default"], {
-    data: elevationGainData,
-    __source: {
-      fileName: _jsxFileName,
       lineNumber: 72
     },
     __self: this
-  }));
+  })), react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement("div", {
+    style: {
+      height: 500,
+      width: 1000,
+      boxShadow: '10px 10px 8px 10px #BDBDBD'
+    },
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 74
+    },
+    __self: this
+  }, react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(_graphs_ElevationGain__WEBPACK_IMPORTED_MODULE_6__["default"], {
+    data: elevationGainData,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 81
+    },
+    __self: this
+  })));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Graph);
 
 /***/ }),
 
-/***/ "./components/graphs/Distance.js":
-/*!***************************************!*\
-  !*** ./components/graphs/Distance.js ***!
-  \***************************************/
+/***/ "./components/graphs/Distance.tsx":
+/*!****************************************!*\
+  !*** ./components/graphs/Distance.tsx ***!
+  \****************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -159,12 +170,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _nivo_stream__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @nivo/stream */ "./node_modules/@nivo/stream/dist/nivo-stream.esm.js");
-var _jsxFileName = "/Users/ericcrowder/Documents/repos/stravaR/components/graphs/Distance.js";
+var _jsxFileName = "/Users/ericcrowder/Documents/repos/stravaR/client/components/graphs/Distance.tsx";
 
 
 
 var Distance = function Distance(props) {
-  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_nivo_stream__WEBPACK_IMPORTED_MODULE_1__["ResponsiveStream"], {
+  return react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_nivo_stream__WEBPACK_IMPORTED_MODULE_1__["ResponsiveStream"], {
     data: props.data,
     keys: ['distance'],
     colors: "category10",
@@ -199,7 +210,7 @@ var Distance = function Distance(props) {
     motionDamping: 15,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 5
+      lineNumber: 6
     },
     __self: this
   });
@@ -209,10 +220,10 @@ var Distance = function Distance(props) {
 
 /***/ }),
 
-/***/ "./components/graphs/ElevationGain.js":
-/*!********************************************!*\
-  !*** ./components/graphs/ElevationGain.js ***!
-  \********************************************/
+/***/ "./components/graphs/ElevationGain.tsx":
+/*!*********************************************!*\
+  !*** ./components/graphs/ElevationGain.tsx ***!
+  \*********************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -221,12 +232,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _nivo_stream__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @nivo/stream */ "./node_modules/@nivo/stream/dist/nivo-stream.esm.js");
-var _jsxFileName = "/Users/ericcrowder/Documents/repos/stravaR/components/graphs/ElevationGain.js";
+var _jsxFileName = "/Users/ericcrowder/Documents/repos/stravaR/client/components/graphs/ElevationGain.tsx";
 
 
 
 var ElevationGain = function ElevationGain(props) {
-  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_nivo_stream__WEBPACK_IMPORTED_MODULE_1__["ResponsiveStream"], {
+  return react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_nivo_stream__WEBPACK_IMPORTED_MODULE_1__["ResponsiveStream"], {
     data: props.data,
     keys: ['elevationGain'],
     colors: "dark2",
@@ -261,7 +272,7 @@ var ElevationGain = function ElevationGain(props) {
     motionDamping: 15,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 5
+      lineNumber: 6
     },
     __self: this
   });
@@ -30145,20 +30156,20 @@ exports.setConfig = setConfig;
 
 /***/ }),
 
-/***/ "./node_modules/next/dist/build/webpack/loaders/next-client-pages-loader.js?page=%2F&absolutePagePath=%2FUsers%2Fericcrowder%2FDocuments%2Frepos%2FstravaR%2Fpages%2Findex.js!./":
-/*!************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/next/dist/build/webpack/loaders/next-client-pages-loader.js?page=%2F&absolutePagePath=%2FUsers%2Fericcrowder%2FDocuments%2Frepos%2FstravaR%2Fpages%2Findex.js ***!
-  \************************************************************************************************************************************************************************************/
+/***/ "./node_modules/next/dist/build/webpack/loaders/next-client-pages-loader.js?page=%2F&absolutePagePath=%2FUsers%2Fericcrowder%2FDocuments%2Frepos%2FstravaR%2Fclient%2Fpages%2Findex.tsx!./":
+/*!**********************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/next/dist/build/webpack/loaders/next-client-pages-loader.js?page=%2F&absolutePagePath=%2FUsers%2Fericcrowder%2FDocuments%2Frepos%2FstravaR%2Fclient%2Fpages%2Findex.tsx ***!
+  \**********************************************************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 
     (window.__NEXT_P=window.__NEXT_P||[]).push(["/", function() {
-      var page = __webpack_require__(/*! ./pages/index.js */ "./pages/index.js")
+      var page = __webpack_require__(/*! ./pages/index.tsx */ "./pages/index.tsx")
       if(true) {
-        module.hot.accept(/*! ./pages/index.js */ "./pages/index.js", function() {
+        module.hot.accept(/*! ./pages/index.tsx */ "./pages/index.tsx", function() {
           if(!next.router.components["/"]) return
-          var updatedPage = __webpack_require__(/*! ./pages/index.js */ "./pages/index.js")
+          var updatedPage = __webpack_require__(/*! ./pages/index.tsx */ "./pages/index.tsx")
           next.router.update("/", updatedPage.default || updatedPage)
         })
       }
@@ -35694,10 +35705,10 @@ module.exports = function(module) {
 
 /***/ }),
 
-/***/ "./pages/index.js":
-/*!************************!*\
-  !*** ./pages/index.js ***!
-  \************************/
+/***/ "./pages/index.tsx":
+/*!*************************!*\
+  !*** ./pages/index.tsx ***!
+  \*************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -35705,19 +35716,19 @@ module.exports = function(module) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _components_Graph__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/Graph */ "./components/Graph.js");
-var _jsxFileName = "/Users/ericcrowder/Documents/repos/stravaR/pages/index.js";
+/* harmony import */ var _components_Graph__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/Graph */ "./components/Graph.tsx");
+var _jsxFileName = "/Users/ericcrowder/Documents/repos/stravaR/client/pages/index.tsx";
 
 
 
 var Home = function Home() {
-  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  return react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", {
     __source: {
       fileName: _jsxFileName,
       lineNumber: 6
     },
     __self: this
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Graph__WEBPACK_IMPORTED_MODULE_1__["default"], {
+  }, react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_components_Graph__WEBPACK_IMPORTED_MODULE_1__["default"], {
     __source: {
       fileName: _jsxFileName,
       lineNumber: 7
@@ -35731,13 +35742,13 @@ var Home = function Home() {
 /***/ }),
 
 /***/ 1:
-/*!****************************************************************************************************************************************!*\
-  !*** multi next-client-pages-loader?page=%2F&absolutePagePath=%2FUsers%2Fericcrowder%2FDocuments%2Frepos%2FstravaR%2Fpages%2Findex.js ***!
-  \****************************************************************************************************************************************/
+/*!**************************************************************************************************************************************************!*\
+  !*** multi next-client-pages-loader?page=%2F&absolutePagePath=%2FUsers%2Fericcrowder%2FDocuments%2Frepos%2FstravaR%2Fclient%2Fpages%2Findex.tsx ***!
+  \**************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! next-client-pages-loader?page=%2F&absolutePagePath=%2FUsers%2Fericcrowder%2FDocuments%2Frepos%2FstravaR%2Fpages%2Findex.js! */"./node_modules/next/dist/build/webpack/loaders/next-client-pages-loader.js?page=%2F&absolutePagePath=%2FUsers%2Fericcrowder%2FDocuments%2Frepos%2FstravaR%2Fpages%2Findex.js!./");
+module.exports = __webpack_require__(/*! next-client-pages-loader?page=%2F&absolutePagePath=%2FUsers%2Fericcrowder%2FDocuments%2Frepos%2FstravaR%2Fclient%2Fpages%2Findex.tsx! */"./node_modules/next/dist/build/webpack/loaders/next-client-pages-loader.js?page=%2F&absolutePagePath=%2FUsers%2Fericcrowder%2FDocuments%2Frepos%2FstravaR%2Fclient%2Fpages%2Findex.tsx!./");
 
 
 /***/ }),

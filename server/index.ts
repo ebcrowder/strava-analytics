@@ -1,36 +1,28 @@
 const Koa = require('koa');
-const Router = require('koa-router');
-const router = new Router();
 const app = new Koa();
+
+const { ApolloServer, gql } = require('apollo-server-koa');
 const axios = require('axios');
-const dotenv = require('dotenv');
 
-dotenv.config();
 
-const url = 'https://www.strava.com/api/v3/athlete/activities';
+// Construct a schema, using GraphQL schema language
+const typeDefs = gql`
+  type Query {
+    hello: String
+  }
+`;
 
-const getStravaData = async url => {
-  try {
-    const response = await axios.get(url, {
-      method: 'GET',
-      headers: {
-        Authorization: `Bearer ${process.env.AUTH_TOKEN}`
-      }
-    });
-
-    return response;
-  } catch (error) {
-    console.log(error);
+// Provide resolver functions for your schema fields
+const resolvers = {
+  Query: {
+    hello: () => 'Hello world!'
   }
 };
 
-router.get('/', async (ctx, next) => {
-  const stravaData = await getStravaData(url).then(response => response.data);
+const server = new ApolloServer({ typeDefs, resolvers });
 
-  ctx.body = stravaData;
-});
+server.applyMiddleware({ app });
 
-app
-  .use(router.routes())
-  .use(router.allowedMethods())
-  .listen(3000);
+app.listen({ port: 4000 }, () =>
+  console.log(`🚀 Server ready at http://localhost:4000${server.graphqlPath}`)
+);

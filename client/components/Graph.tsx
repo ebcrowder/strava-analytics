@@ -61,16 +61,26 @@ const Graph = () => {
   }, []);
 
   return (
-    <div
-      style={{
-        height: 500,
-        width: 1000,
-        boxShadow: '10px 10px 8px 10px #BDBDBD'
-      }}
-    >
-      <Distance data={distanceData} />
-      <ElevationGain data={elevationGainData} />
-    </div>
+    <>
+      <div
+        style={{
+          height: 500,
+          width: 1000,
+          boxShadow: '10px 10px 8px 10px #BDBDBD'
+        }}
+      >
+        <Distance data={distanceData} />
+      </div>
+      <div
+        style={{
+          height: 500,
+          width: 1000,
+          boxShadow: '10px 10px 8px 10px #BDBDBD'
+        }}
+      >
+        <ElevationGain data={elevationGainData} />
+      </div>
+    </>
   );
 };
 
