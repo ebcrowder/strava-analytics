@@ -1,7 +1,7 @@
 {
   "name": "stravar",
   "version": "1.0.0",
-  "description": "strava visualizer ",
+  "description": "strava visualizer",
   "main": "index.js",
   "scripts": {
     "dev": "next",
