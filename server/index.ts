@@ -1,4 +1,6 @@
 const Koa = require('koa');
+const Router = require('koa-router');
+const router = new Router();
 const app = new Koa();
 const axios = require('axios');
 const dotenv = require('dotenv');
@@ -6,39 +8,6 @@ const dotenv = require('dotenv');
 dotenv.config();
 
 const url = 'https://www.strava.com/api/v3/athlete/activities';
-
-class DataCache {
-  constructor(fetchFunction, minutesToLive = 10) {
-    this.millisecondsToLive = minutesToLive * 60 * 1000;
-    this.fetchFunction = fetchFunction;
-    this.cache = null;
-    this.getData = this.getData.bind(this);
-    this.resetCache = this.resetCache.bind(this);
-    this.isCacheExpired = this.isCacheExpired.bind(this);
-    this.fetchDate = new Date(0);
-  }
-  isCacheExpired() {
-    return (
-      this.fetchDate.getTime() + this.millisecondsToLive < new Date().getTime()
-    );
-  }
-  getData(url) {
-    if (!this.cache || this.isCacheExpired()) {
-      console.log('cache expired - fetching new data');
-      return this.fetchFunction(url).then(data => {
-        this.cache = data;
-        this.fetchDate = new Date();
-        return data;
-      });
-    } else {
-      console.log('cache hit');
-      return Promise.resolve(this.cache);
-    }
-  }
-  resetCache() {
-    this.fetchDate = new Date(0);
-  }
-}
 
 const getStravaData = async url => {
   try {
@@ -48,21 +17,20 @@ const getStravaData = async url => {
         Authorization: `Bearer ${process.env.AUTH_TOKEN}`
       }
     });
-    const data = response.data;
+
+    return response;
   } catch (error) {
     console.log(error);
   }
 };
 
-const stravaDataCache = new DataCache(getStravaData, 0.5);
+router.get('/', async (ctx, next) => {
+  const stravaData = await getStravaData(url).then(response => response.data);
 
-stravaDataCache.getData(url).then(response => {
-  return response;
+  ctx.body = stravaData;
 });
 
-// response
-app.use(ctx => {
-  ctx.body = 'Hello Koa';
-});
-
-app.listen(3000);
+app
+  .use(router.routes())
+  .use(router.allowedMethods())
+  .listen(3000);
